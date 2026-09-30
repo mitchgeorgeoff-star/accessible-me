@@ -306,5 +306,19 @@ button:focus-visible {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
 /* AI prompt used: "Review this basic CSS and improve contrast, focus states, spacing, responsiveness, and link/button styling so the page remains accessible and reads well on mobile." I used this prompt to keep the design strong while ensuring the visual experience still supports readability, keyboard use, and WCAG-friendly color contrast. */
 /* The layout uses soft contrast and large touch targets so text remains readable, keyboard focus stays obvious, and the page still feels polished without sacrificing accessibility. */
