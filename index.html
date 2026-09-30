@@ -5,64 +5,125 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessible Me</title>
+  <meta name="description" content="Jam Box Studios produces creative music spaces and studio services built for artists and collaborators.">
+  <title>Jam Box Studios | Accessible Me</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&family=Stick+No+Bills:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Stick+No+Bills:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-  <div class="container">
-    <div class="site-header">
-      <h1>Jam Box Studios</h1>
-      <div class="main-nav">
+  <!-- AI prompt used: "Improve this starter HTML for accessibility by adding semantic landmarks, skip links, better labels, and schema markup while keeping the style polished." I used this to guide the structure so the page stays accessible without losing the original design intent. -->
+  <!-- Skip links let keyboard users move directly to the main content or contact form without reading every navigation item first. -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#contact">Skip to contact form</a>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="branding-block">
+        <p class="eyebrow">Creative audio &amp; performance space</p>
+        <h1>Jam Box Studios</h1>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">Products</a></li>
           <li><a href="#">Reservation</a></li>
           <li><a href="#">Studio</a></li>
         </ul>
-      </div>
-      <img src="https://placekitten.com/1200/900" class="banner">
+      </nav>
+
+      <!-- The banner image is intentionally decorative, but it still needs a clear alt description for users who browse with assistive tech. -->
+      <figure class="hero-figure">
+        <img src="https://picsum.photos/1200/900" alt="A colourful abstract studio banner that reflects the creative energy of Jam Box Studios" class="banner">
+      </figure>
     </div>
-    <div class="main-content">
-      <h1>Welcome to Jam Box</h1>
+  </header>
+
+  <main id="main-content" class="main-content container" tabindex="-1">
+    <section class="intro" aria-labelledby="welcome-heading">
+      <p class="section-label">Welcome</p>
+      <h2 id="welcome-heading">Welcome to Jam Box</h2>
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus laboriosam praesentium nostrum ipsa eveniet, officia deserunt cumque eius esse enim, ipsam accusantium autem nihil quaerat sequi perferendis optio quia veritatis.</p>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam perferendis expedita sed itaque odit ipsam omnis, eos voluptates magni fugit culpa voluptatibus, inventore eaque, eligendi voluptatum! Voluptate iusto error voluptatibus.</p>
-      <div class="owner">
-        <h1>Meet the owner</h1>
-        <ul>
-          <li>Name: John Doe</li>
-          <li>Title: CEO</li>
-          <li>Email: johnjoe@jambox.ca</li>
-          <li>Phone: 613-000-0000</li>
-        </ul>
-        <h1>Address</h1>
-        <p>
-          Jambox Studios
-          123 Guitar Road,
-          Musicville, Danceistan
-          B3T 0L0
-        </p>
-      </div>
-      <div class="contact-section">
-        <h1>Contact Us</h1>
-        <form action="thanks.html">
-          <label>Full Name</label>
-          <input type="text" placeholder="Full Name">
-          <input type="text" placeholder="Email">
-          <input type="text" placeholder="Subject">
-          <b>Your Message</b>
-          <textarea></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    </div>
-    <div class="site-footer">
-      &copy; 2021 Jam Box Studios
-    </div>
-  </div>
-</body>
+    </section>
 
+    <aside class="owner card" aria-labelledby="owner-heading">
+      <h2 id="owner-heading">Meet the owner</h2>
+      <ul class="owner-list">
+        <li><strong>Name:</strong> John Doe</li>
+        <li><strong>Title:</strong> CEO</li>
+        <li><strong>Email:</strong> <a href="mailto:johnjoe@jambox.ca">johnjoe@jambox.ca</a></li>
+        <li><strong>Phone:</strong> <a href="tel:+16130000000">613-000-0000</a></li>
+      </ul>
+
+      <h3>Address</h3>
+      <address>
+        Jam Box Studios<br>
+        123 Guitar Road<br>
+        Musicville, Danceistan<br>
+        B3T 0L0
+      </address>
+    </aside>
+
+    <section id="contact" class="contact-section card" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact Us</h2>
+      <form action="thanks.html" method="post">
+        <div class="field-group">
+          <label for="full-name">Full Name</label>
+          <input id="full-name" name="full-name" type="text" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="field-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="field-group">
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" placeholder="What is this about?" required>
+        </div>
+
+        <div class="field-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Jam Box Studios</p>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicRecordingStudio",
+      "name": "Jam Box Studios",
+      "description": "Creative studio space for music production and performance bookings.",
+      "email": "johnjoe@jambox.ca",
+      "telephone": "+1-613-000-0000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Guitar Road",
+        "addressLocality": "Musicville",
+        "addressRegion": "Danceistan",
+        "postalCode": "B3T 0L0",
+        "addressCountry": "CA"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "John Doe",
+        "jobTitle": "CEO"
+      }
+    }
+  </script>
+</body>
 </html>
